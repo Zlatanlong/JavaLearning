@@ -3,10 +3,6 @@ package test;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author dmt
- */
 public class MyDictionary {
 
     Map<String, String> map = new HashMap<String, String>();

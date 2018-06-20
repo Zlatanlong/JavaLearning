@@ -1,5 +1,9 @@
 package test;
-
+/*
+设计一个线程类A，其中有一个int[]类型的成员变量arr,和一个int类型的成员变量key。
+设置一个构造方法能够初始化成员变量arr和key。要求该线程能够将数组arr里面的数据依次与key相乘，
+并实现在每0.1秒时间间隔倒序输出
+*/
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
