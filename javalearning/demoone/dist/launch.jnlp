@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>demoone</title>
+        <vendor>dmt</vendor>
+        <homepage href=""/>
+        <description>demoone</description>
+        <description kind="short">demoone</description>
+    </information>
+    <update check="always"/>
+    <resources>
+        <j2se version="1.7+"/>
+        <jar href="demoone.jar" main="true"/>
+    </resources>
+    <application-desc main-class="ui.MainFrame">
+    </application-desc>
+</jnlp>
