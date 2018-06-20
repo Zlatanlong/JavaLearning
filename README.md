@@ -1,1 +1,2 @@
 # JavaLearning
+这个仓库是我在学习JAVA时候每次上机课的代码。

@@ -17,11 +17,6 @@ public class GamePanel extends javax.swing.JPanel implements Runnable {
         initComponents();
         controller.getShape();
         controller.inintFix();
-//        for (int i = 0; i < 9; i++) {
-//            for (int j = 19; j > 16; j--) {
-//                controller.fix[i][j] = 1;
-//            }
-//        }
         new Thread(this).start();
     }
     

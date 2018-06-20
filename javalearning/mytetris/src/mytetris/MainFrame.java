@@ -5,12 +5,16 @@ public class MainFrame extends javax.swing.JFrame {
     static int mod;
     static boolean isOver = true;
     static boolean isPause = false;
-    static  int count=0;
-    GamePanel gp;
+    static int count=0;//总分
+    static int point;//每次加分
+    static GamePanel gp;
     static CountPanel cp;
+    /**
+     * 改变分数显示同时改变速度
+     */
     static  public void changeCount(){
         cp.count.setText( Integer.toString(MainFrame.count));
-        if (mod!=2) {
+        if (mod!=2&&(1000-count*9)>0) {
             interval=1000-count*9;
         }
     }
@@ -47,6 +51,8 @@ public class MainFrame extends javax.swing.JFrame {
         msg = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         model = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        msg2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -94,28 +100,37 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        msg2.setColumns(20);
+        msg2.setRows(5);
+        msg2.setText("游戏说明：\n键盘←→控制方向，↑旋转俄罗斯方块，↓加速下落\n简约模式，炫彩模式每消除一行加1分；\n极速模式每消除一行加10分；\n道具说明：\n使用道具后将在最低端消除一行，\n每局游戏只有5次使用道具的机会！");
+        msg2.setBorder(null);
+        msg2.setFocusable(false);
+        jScrollPane1.setViewportView(msg2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pause)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +150,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,8 +169,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goActionPerformed
-        // TODO add your handling code here:
+        // 开始游戏按钮:
         msg.setVisible(false);
+        msg2.setVisible(false);
+        jScrollPane1.setVisible(false);
         start.setVisible(true);
         pause.setVisible(true);
         cp.setVisible(true);
@@ -167,7 +186,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_goActionPerformed
 
     private void pauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseActionPerformed
-        // TODO add your handling code here:
+        // 暂停按钮:
         if (isPause) {
             isPause=false;
             pause.setText("暂停");
@@ -179,10 +198,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pauseActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-        // TODO add your handling code here:
+        // 重新开始按钮:
         try {
             over();
-            Thread.sleep(1000);
+            Thread.sleep(1000);//等待GamePanel线程死亡
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -194,18 +213,29 @@ public class MainFrame extends javax.swing.JFrame {
         count=0;
         changeCount();
         cp.delOver();
+        cp.setProp1Count(5);
         this.requestFocusInWindow();
     }//GEN-LAST:event_startActionPerformed
 
     private void modelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelActionPerformed
+        // 模式切换
         String mo=(String)model.getSelectedItem();
-        if(mo.equals("简约模式")){
-            mod=0;
-        }else if(mo.equals("炫彩模式")){
-            mod=1;
-        }else if(mo.equals("极速模式")){
-            mod=2;
-            interval=200;
+        switch (mo) {
+            case "简约模式":
+                mod=0;
+                point=1;
+                break;
+            case "炫彩模式":
+                mod=1;
+                point=1;
+                break;
+            case "极速模式":
+                mod=2;
+                interval=100;
+                point=10;
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_modelActionPerformed
     
@@ -248,8 +278,10 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton go;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> model;
     private javax.swing.JLabel msg;
+    private javax.swing.JTextArea msg2;
     private javax.swing.JButton pause;
     private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables

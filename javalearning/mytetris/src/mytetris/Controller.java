@@ -5,13 +5,11 @@ package mytetris;
  * @author dmt
  */
 public class Controller {
-
-    //CountPanel cp = new CountPanel();
-    int point = 1;
+    int removeLog=0;//同时消行数量
     int currentX = 3;
     int currentY = 0;
     public static int[][] fix = new int[10][20];// 把整个界面分割成10*20
-    Block currentShape ;
+    Block currentShape;
     static Block nextShape = new Block();
 
     /**
@@ -24,13 +22,14 @@ public class Controller {
 
     /**
      * 返回当前的形状
+     *
      * @return
      */
-    public  Block getAShape() {
+    public Block getAShape() {
         return currentShape;
     }
-    
-    public static Block getNextShape(){
+
+    public static Block getNextShape() {
         return nextShape;
     }
 
@@ -103,13 +102,14 @@ public class Controller {
 
     /**
      * 把死掉的方块变成墙；
+     *
      * @param x
      * @param y
      */
     public void add(int x, int y) {
         int[] tempShape = currentShape.getCurrentBlocks();
         for (int i = 0; i < 8; i += 2) {
-            fix[x + tempShape[i]][y + tempShape[i + 1]] = currentShape.getI()+1;
+            fix[x + tempShape[i]][y + tempShape[i + 1]] = currentShape.getI() + 1;
         }
         remove();
         currentX = 3;
@@ -118,6 +118,9 @@ public class Controller {
         MainFrame.changeNext();
     }
 
+    /**
+     * 消除可消的一行
+     */
     public void remove() {
         for (int i = 19; i > 0; i--) {
             //i是一共20行
@@ -128,7 +131,7 @@ public class Controller {
                 }
             }
             if (flag == 0) {
-                MainFrame.count += point;
+                MainFrame.count += (MainFrame.point+removeLog);
                 MainFrame.changeCount();
                 for (int j = 0; j < 10; j++) {
                     fix[j][i] = 0;
@@ -138,7 +141,7 @@ public class Controller {
                         fix[j][k] = fix[j][k - 1];
                     }
                 }//其他行下移一行
-                point++;
+                removeLog++;
                 remove();
             }
         }
@@ -154,17 +157,22 @@ public class Controller {
                 fix[j][0] = 0;
             }
         }
-        point = 1;
+        removeLog = 1;
     }
-    
-    static public void prop1(){
+    /**
+     * 道具1
+     */
+    static public void prop1() {
         for (int j = 0; j < 10; j++) {
-                    fix[j][19] = 0;
-                }//消除这一行
-                for (int k = 19; k > 0; k--) {
-                    for (int j = 0; j < 10; j++) {
-                        fix[j][k] = fix[j][k - 1];
-                    }
-                }//其他行下移一行
+            fix[j][19] = 0;
+        }//消除这一行
+        for (int k = 19; k > 0; k--) {
+            for (int j = 0; j < 10; j++) {
+                fix[j][k] = fix[j][k - 1];
+            }
+        }//其他行下移一行
+        MainFrame.count += 10;
+        MainFrame.changeCount();
+        MainFrame.gp.repaint();
     }
 }

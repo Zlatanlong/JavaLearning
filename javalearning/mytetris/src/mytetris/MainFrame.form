@@ -29,27 +29,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Component id="go" min="-2" pref="293" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="msg" min="-2" pref="293" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="start" min="-2" pref="106" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="pause" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" pref="76" max="-2" attributes="0"/>
                   <Component id="model" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="go" min="-2" pref="293" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,7 +78,9 @@
               <Component id="msg" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="go" min="-2" pref="198" max="-2" attributes="0"/>
-              <EmptySpace pref="199" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -150,5 +155,25 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="msg2">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="&#x6e38;&#x620f;&#x8bf4;&#x660e;&#xff1a;&#xa;&#x952e;&#x76d8;&#x2190;&#x2192;&#x63a7;&#x5236;&#x65b9;&#x5411;&#xff0c;&#x2191;&#x65cb;&#x8f6c;&#x4fc4;&#x7f57;&#x65af;&#x65b9;&#x5757;&#xff0c;&#x2193;&#x52a0;&#x901f;&#x4e0b;&#x843d;&#xa;&#x7b80;&#x7ea6;&#x6a21;&#x5f0f;&#xff0c;&#x70ab;&#x5f69;&#x6a21;&#x5f0f;&#x6bcf;&#x6d88;&#x9664;&#x4e00;&#x884c;&#x52a0;1&#x5206;&#xff1b;&#xa;&#x6781;&#x901f;&#x6a21;&#x5f0f;&#x6bcf;&#x6d88;&#x9664;&#x4e00;&#x884c;&#x52a0;10&#x5206;&#xff1b;&#xa;&#x9053;&#x5177;&#x8bf4;&#x660e;&#xff1a;&#xa;&#x4f7f;&#x7528;&#x9053;&#x5177;&#x540e;&#x5c06;&#x5728;&#x6700;&#x4f4e;&#x7aef;&#x6d88;&#x9664;&#x4e00;&#x884c;&#xff0c;&#xa;&#x6bcf;&#x5c40;&#x6e38;&#x620f;&#x53ea;&#x6709;5&#x6b21;&#x4f7f;&#x7528;&#x9053;&#x5177;&#x7684;&#x673a;&#x4f1a;&#xff01;"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -15,10 +15,15 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
         initComponents();
         prop1show.setText("数量："+prop1Count);
     }
-
+    /**
+     * 显示结束
+     */
     public void showOver() {
         show.setText("GAMEOVER!");
     }
+    /**
+     * 删除Over标致
+     */
     public void delOver() {
         show.setText("");
     }
@@ -126,8 +131,8 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void prop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prop1ActionPerformed
-        // TODO add your handling code here:
-        if (prop1Count>0) {
+        // 使用道具1:
+        if (prop1Count>0&&!MainFrame.isOver) {
             Controller.prop1();
             prop1Count--;
             prop1show.setText("数量："+prop1Count);
@@ -142,4 +147,9 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
     private javax.swing.JLabel prop1show;
     private javax.swing.JLabel show;
     // End of variables declaration//GEN-END:variables
+
+    public void setProp1Count(int prop1Count) {
+        this.prop1Count = prop1Count;
+        this.prop1show.setText("数量："+prop1Count);
+    }
 }
