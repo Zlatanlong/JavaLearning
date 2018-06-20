@@ -28,7 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout card = null; // CardLayout布局管理器  
     private JButton addButton = null, delButton = null, queryButton = null,searchButton=null,updateButton=null; // 三个可直接翻转到JPanel组件的按钮
     public MainFrame() {
-         StudentAction action = new StudentAction();
+         final StudentAction action = new StudentAction();
         //盛放各种功能的TAB
         tp = new TabPanel();
         this.getContentPane().add(tp, BorderLayout.NORTH);
