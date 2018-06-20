@@ -6,11 +6,11 @@ package mytetris;
  */
 public class Controller {
 
-    CountPanel cp = new CountPanel();
+    //CountPanel cp = new CountPanel();
     int point = 1;
     int currentX = 3;
     int currentY = 0;
-    public int[][] fix = new int[10][20];// 把整个界面分割成10*20
+    public static int[][] fix = new int[10][20];// 把整个界面分割成10*20
     Block currentShape ;
     static Block nextShape = new Block();
 
@@ -156,5 +156,15 @@ public class Controller {
         }
         point = 1;
     }
-
+    
+    static public void prop1(){
+        for (int j = 0; j < 10; j++) {
+                    fix[j][19] = 0;
+                }//消除这一行
+                for (int k = 19; k > 0; k--) {
+                    for (int j = 0; j < 10; j++) {
+                        fix[j][k] = fix[j][k - 1];
+                    }
+                }//其他行下移一行
+    }
 }

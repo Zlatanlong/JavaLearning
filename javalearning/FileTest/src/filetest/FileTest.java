@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package filetest;
 
 import java.io.File;
@@ -14,70 +10,65 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author dmt
- */
 public class FileTest {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException {
-        String fileName = "C:\\Users\\青果\\Desktop\\1510020104.txt";        
-       /* 
-        * FileController.createDir(dirName);  
+        String fileName = "C:\\Users\\青果\\Desktop\\1510020104.txt";
+        /* 
+         * FileController.createDir(dirName);  
           
-        try {
-            // TODO code application logic here
-            Date day = new Date();
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            File file = new File("dirName",df.format(day));  
-            File filedate = new File("dirName","aa.txt");          
-            try {
-                file.createNewFile();
-                filedate.createNewFile();               
-            } catch (IOException ex) {
-                Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
-            }
+         try {
+         // TODO code application logic here
+         Date day = new Date();
+         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+         File file = new File("dirName",df.format(day));  
+         File filedate = new File("dirName","aa.txt");          
+         try {
+         file.createNewFile();
+         filedate.createNewFile();               
+         } catch (IOException ex) {
+         Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+         }
 
             
-            Runtime ec= Runtime.getRuntime();
-            File file5 = new File("C:\\windows\\notepad.exe");
-            ec.exec(file5.getAbsolutePath());
-        } catch (IOException ex) {
-            Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        FileController.delFolder(dirName);
-        */
-        TimeManager time=new TimeManager();
+         Runtime ec= Runtime.getRuntime();
+         File file5 = new File("C:\\windows\\notepad.exe");
+         ec.exec(file5.getAbsolutePath());
+         } catch (IOException ex) {
+         Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+         } 
+         FileController.delFolder(dirName);
+         */
+        TimeManager time = new TimeManager();
         time.setName("lcl");
-        File f =new File(fileName);
+        File f = new File(fileName);
         try {
             f.createNewFile();
         } catch (IOException ex) {
             Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        File f2 =new File("C:\\Users\\青果\\Desktop\\a.txt");
+        File f2 = new File("C:\\Users\\青果\\Desktop\\a.txt");
         try {
             f2.createNewFile();
             FileOutputStream fileOut = new FileOutputStream(f2);
-            ObjectOutputStream objOut=new ObjectOutputStream(fileOut);
-            objOut.writeObject(time); 
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(time);
             objOut.close();
             FileInputStream fileIn = new FileInputStream(f2);
-            ObjectInputStream objIn=new ObjectInputStream(fileIn);
-            TimeManager time2=(TimeManager)objIn.readObject();
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+            TimeManager time2 = (TimeManager) objIn.readObject();
             objIn.close();
-            System.out.println("TimeManager name is  "+time2.getName());
-        } 
-        catch (ClassNotFoundException e) {e.toString();}
-        catch (IOException ex) {
+            System.out.println("TimeManager name is  " + time2.getName());
+        } catch (ClassNotFoundException e) {
+            e.toString();
+        } catch (IOException ex) {
             Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         //time.outputCurrentTime(f);
         time.getInternal(f);
-        FileController.insert(f,3,"lyxsb");
+        FileController.insert(f, 3, "lyxsb");
     }
-}  
-
+}

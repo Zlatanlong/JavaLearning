@@ -29,7 +29,7 @@ public class MainFrame extends javax.swing.JFrame {
         start.setVisible(false);
         pause.setVisible(false);
         cp=new CountPanel();
-        cp.setSize(100,400);
+        cp.setSize(100,600);
         cp.setLocation(254, 100);
         cp.setVisible(false);
         this.getContentPane().add(cp);

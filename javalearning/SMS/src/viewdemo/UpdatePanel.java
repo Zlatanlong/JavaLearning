@@ -59,7 +59,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("您要修改的是：");
+        jLabel2.setText("您要删除的是：");
 
         jLabel3.setText("请输入学号：");
 

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package filetest;
 
 import java.io.BufferedReader;
@@ -20,20 +16,16 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author dmt
- */
+public class TimeManager implements Serializable {
 
+    private String name;
 
-public class TimeManager implements Serializable{
-    private String name; 
     /**
      * 将当前时间写入文件
-     * @param f 
-     * @return 
+     * @param f
+     * @return
      */
-    public boolean outputCurrentTime(File f){
+    public boolean outputCurrentTime(File f) {
         Date day = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
@@ -44,53 +36,46 @@ public class TimeManager implements Serializable{
             bufferWrite.close();
             out.close();
             return true;
-            } catch (IOException ex) {        
-                Logger.getLogger(TimeManager.class.getName()).log(Level.SEVERE, null, ex);       
-                return false;       
-            }
-        
-    } 
+        } catch (IOException ex) {
+            Logger.getLogger(TimeManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
     /**
      * 获取文件上次记录的时间，输出与当前时间的时间间隔
      * @param f
-     * @return 
+     * @return
      */
     public void getInternal(File f) {
         Date day = new Date();
         try {
             Reader in = new FileReader(f);
-            BufferedReader bufferRead=new BufferedReader(in);
+            BufferedReader bufferRead = new BufferedReader(in);
             try {
                 String fromDate = bufferRead.readLine();
-                System.out.println("old data is :"+fromDate);
+                System.out.println("old data is :" + fromDate);
                 SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//如2016-08-10 20:40    
                 String toDate = simpleFormat.format(day);
-                System.out.println("now data is :"+toDate);
-                long from = simpleFormat.parse(fromDate).getTime();  
-                long to = simpleFormat.parse(toDate).getTime();  
-                int days = (int) ((to - from)/(1000 ));  
-                System.out.println("data seconds cut is :"+days);
-            } catch (    IOException | ParseException ex) {
+                System.out.println("now data is :" + toDate);
+                long from = simpleFormat.parse(fromDate).getTime();//获取毫秒数
+                long to = simpleFormat.parse(toDate).getTime();
+                int days = (int) ((to - from) / (1000));
+                System.out.println("data seconds cut is :" + days);
+            } catch (IOException | ParseException ex) {
                 Logger.getLogger(TimeManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TimeManager.class.getName()).log(Level.SEVERE, null, ex);              
-        }    
+            Logger.getLogger(TimeManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
 }

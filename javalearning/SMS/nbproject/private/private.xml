@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/E:/javalearning/SMS/src/viewdemo/MainFrame.java</file>
+        <file>file:/E:/javalearning/SMS/src/viewdemo/AddPanel.java</file>
+        <file>file:/E:/javalearning/SMS/src/action/StudentAction.java</file>
+    </open-files>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/dao/StudentDao.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/action/StudentAction.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/viewdemo/DelPanel.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/db/DBConnent.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/viewdemo/MainFrame.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/viewdemo/AddPanel.java</file>
+            <file>file:/Users/zlatan/Desktop/javalearning/SMS/src/viewdemo/SearchPanel.java</file>
+        </group>
     </open-files>
 </project-private>

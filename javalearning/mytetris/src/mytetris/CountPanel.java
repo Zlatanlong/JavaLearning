@@ -10,12 +10,10 @@ import java.util.logging.Logger;
  * @author dmt
  */
 public class CountPanel extends javax.swing.JPanel implements Runnable {
-
-    /**
-     * Creates new form CountPanel
-     */
+    private int prop1Count = 5;
     public CountPanel() {
         initComponents();
+        prop1show.setText("数量："+prop1Count);
     }
 
     public void showOver() {
@@ -66,6 +64,8 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
         count = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
+        prop1 = new javax.swing.JButton();
+        prop1show = new javax.swing.JLabel();
 
         currrentcount.setText("当前得分:");
 
@@ -75,6 +75,16 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
 
         show.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         show.setForeground(new java.awt.Color(255, 0, 0));
+
+        prop1.setText("道具");
+        prop1.setFocusable(false);
+        prop1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prop1ActionPerformed(evt);
+            }
+        });
+
+        prop1show.setText("数量：0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -86,12 +96,14 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(count, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(show, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(prop1show, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(currrentcount, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 4, Short.MAX_VALUE))
-                    .addComponent(show, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(currrentcount, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prop1))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,14 +117,29 @@ public class CountPanel extends javax.swing.JPanel implements Runnable {
                 .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(137, 137, 137)
+                .addComponent(prop1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(prop1show, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void prop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prop1ActionPerformed
+        // TODO add your handling code here:
+        if (prop1Count>0) {
+            Controller.prop1();
+            prop1Count--;
+            prop1show.setText("数量："+prop1Count);
+        }
+    }//GEN-LAST:event_prop1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel count;
     private javax.swing.JLabel currrentcount;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton prop1;
+    private javax.swing.JLabel prop1show;
     private javax.swing.JLabel show;
     // End of variables declaration//GEN-END:variables
 }
