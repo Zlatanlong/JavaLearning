@@ -58,7 +58,7 @@ public class TimeController {
         }
     }
     /**
-     * 读出fileName路径的文件中的第一行
+     * 读出fileName路径的文件中的每一个时间并输出
      * @param fileName
      * @return 
      */

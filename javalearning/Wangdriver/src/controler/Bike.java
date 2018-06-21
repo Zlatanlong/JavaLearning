@@ -26,6 +26,7 @@ public class Bike extends Vehicle {
         return time;
     }
 
+    @Override
     public int getSpeed() {
         return 80;
     }

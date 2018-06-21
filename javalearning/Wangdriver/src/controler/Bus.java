@@ -26,6 +26,7 @@ public class Bus extends Vehicle {
         return time;
     }
 
+    @Override
     public int getSpeed() {
         return 100;
     }

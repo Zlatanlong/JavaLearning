@@ -97,13 +97,11 @@ public class StudentDao {
          * @throws Exception 
          */
         public List<Student> query(List<Map<String, Object>> params) throws Exception{
-		List<Student> result=new ArrayList<>();
-		
 		Connection conn=DBConnent.getConnection();
 		StringBuilder sb=new StringBuilder();
 		sb.append("select * from students where 1=1 ");
 		
-		if(params!=null&&params.size()>0){
+		if(!params.isEmpty()&&params.size()>0){
 			for (int i = 0; i < params.size(); i++) {
 				Map<String, Object> map=params.get(i);
 				sb.append(" and  ").append(map.get("name")).append(" ").append(map.get("rela")).append(" ").append(map.get("value")).append(" ");
@@ -113,7 +111,8 @@ public class StudentDao {
 		PreparedStatement ptmt=conn.prepareStatement(sb.toString());
 		
 		ResultSet rs=ptmt.executeQuery();
-		
+                
+		List<Student> result=new ArrayList<>();
 		Student g=null;
 		while(rs.next()){
 			g=new Student();

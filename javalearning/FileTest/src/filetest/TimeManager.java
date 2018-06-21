@@ -32,7 +32,6 @@ public class TimeManager implements Serializable {
             Writer out = new FileWriter(f);
             BufferedWriter bufferWrite = new BufferedWriter(out);
             bufferWrite.write(df.format(day));
-            //bufferWrite.newLine();
             bufferWrite.close();
             out.close();
             return true;
@@ -46,7 +45,6 @@ public class TimeManager implements Serializable {
     /**
      * 获取文件上次记录的时间，输出与当前时间的时间间隔
      * @param f
-     * @return
      */
     public void getInternal(File f) {
         Date day = new Date();

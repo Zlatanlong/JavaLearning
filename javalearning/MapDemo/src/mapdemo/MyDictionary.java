@@ -6,10 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 public class MyDictionary {
 
-    Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> map = new HashMap<>();
     List<String> list = new ArrayList<>();
     /**
      * 将英中文对照加入map
@@ -83,7 +84,15 @@ public class MyDictionary {
 //          md.save("qwehqhwjeq", 3);
 //          System.out.println(md.getData(3));
         //第三题
-        System.out.println(md.getCount("abcabcabcf"));
+        //System.out.println(md.getCount("abcabcabcf"));
+        //第四题
+        A a=new A();
+        B b=new B();
+        Stack st=new Stack();
+        a.setStack(st);
+        b.setStack(st);
+        a.start();
+        b.start();
 
     }
 }

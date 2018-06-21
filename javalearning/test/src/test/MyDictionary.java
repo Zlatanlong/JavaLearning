@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class MyDictionary {
 
-    Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> map = new HashMap<>();
 
     public void addNewWords(String en, String cn) {
         map.put(en, cn);

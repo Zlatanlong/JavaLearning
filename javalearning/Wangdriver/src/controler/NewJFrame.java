@@ -119,7 +119,6 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
 //        String v=(String)jComboBox1.getSelectedItem();//tools
 //        String w=(String)jComboBox2.getSelectedItem();//weather
 //        String d=(String)jComboBox3.getSelectedItem();//driver        

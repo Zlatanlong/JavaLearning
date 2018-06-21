@@ -16,12 +16,11 @@ public class FileTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException {
-        String fileName = "C:\\Users\\青果\\Desktop\\1510020104.txt";
+        String fileName = "1510020104.txt";
         /* 
          * FileController.createDir(dirName);  
           
          try {
-         // TODO code application logic here
          Date day = new Date();
          SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
          File file = new File("dirName",df.format(day));  
@@ -57,6 +56,7 @@ public class FileTest {
             ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
             objOut.writeObject(time);
             objOut.close();
+            //从文件中读入对象！！
             FileInputStream fileIn = new FileInputStream(f2);
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
             TimeManager time2 = (TimeManager) objIn.readObject();
